@@ -1,9 +1,4 @@
 <?php
-// ─────────────────────────────────────────────
-//  Green API — WhatsApp message sender
-//  Replace YOUR_INSTANCE_ID and YOUR_API_TOKEN
-//  with your real credentials from green-api.com
-// ─────────────────────────────────────────────
 
 header('Content-Type: text/plain; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
@@ -48,7 +43,7 @@ $text = "🔔 *New Portfolio Enquiry*\n\n"
       . "🌐 *From:* {$origin}\n\n"
       . "📅 *Sent:* {$date}";
 
-// Green API endpoint
+// API endpoint
 $url = "https://api.green-api.com/waInstance{$instanceId}/sendMessage/{$apiToken}";
 
 $payload = json_encode([
@@ -81,7 +76,7 @@ if ($curlErr || $httpCode < 200 || $httpCode >= 300) {
     exit;
 }
 
-// Green API returns JSON with idMessage on success
+// API returns JSON with idMessage on success
 $decoded = json_decode($response, true);
 if (isset($decoded['idMessage'])) {
     echo 'ok';
