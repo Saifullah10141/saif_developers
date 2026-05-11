@@ -36,13 +36,16 @@ if (!$name || !$email || !$brand || !$message) {
     exit;
 }
 
+$origin = $_SERVER['HTTP_REFERER'] ?? $_SERVER['HTTP_HOST'] ?? 'Unknown';
+
 // Build WhatsApp message text
 $date = date('d M Y, H:i');
 $text = "🔔 *New Portfolio Enquiry*\n\n"
       . "👤 *Name:* {$name}\n"
       . "📧 *Email:* {$email}\n"
       . "🏷️ *Brand:* {$brand}\n"
-      . "💬 *Message:* {$message}\n\n"
+      . "💬 *Message:* {$message}\n"
+      . "🌐 *From:* {$origin}\n\n"
       . "📅 *Sent:* {$date}";
 
 // Green API endpoint
