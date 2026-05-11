@@ -9,8 +9,8 @@ header('Content-Type: text/plain; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
 // ── YOUR CREDENTIALS ──────────────────────────
-$instanceId = getenv('GREEN_API_INSTANCE_ID');
-$apiToken   = getenv('GREEN_API_TOKEN');
+$instanceId = getenv('API_INSTANCE_ID');
+$apiToken   = getenv('API_TOKEN');
 // ─────────────────────────────────────────────
 
 // Only accept POST
@@ -49,7 +49,7 @@ $text = "🔔 *New Portfolio Enquiry*\n\n"
 $url = "https://api.green-api.com/waInstance{$instanceId}/sendMessage/{$apiToken}";
 
 $payload = json_encode([
-    'chatId' => getenv('GREEN_API_CHAT_ID'),
+    'chatId' => getenv('API_CHAT_ID'),
     'message' => $text,
 ]);
 
